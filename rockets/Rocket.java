@@ -51,7 +51,7 @@ public class Rocket extends Actor
             
             hit.setVolume(75);
             hit.play();
-            Health p = getWorld().getObjects(Health.class).get(0);
+            Health p = (Health)getWorld().getObjects(Health.class).get(0);
             p.setHealth(p.getHealth()-1);
             removeTouching(Asteroid.class);
             getWorld().addObject(new Asteroid(),Greenfoot.getRandomNumber(getWorld().getWidth()),3);
