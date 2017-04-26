@@ -2,8 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Rocket here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class Rocket extends Actor
@@ -16,19 +16,19 @@ public class Rocket extends Actor
     GifImage rocket = new GifImage("rocket_thrust.gif");
     GreenfootSound hit = new GreenfootSound("hit.wav");
     GreenfootSound musac = new GreenfootSound("voyage.wav");
- 
+
     public Rocket(){
         speed = 8;
-       
+
     }
-    public void act() 
+    public void act()
     {
         setImage(rocket.getCurrentImage());
-        
+
         getImage().scale(51*3/2,96*3/2);
         movement();
         collide();
-    }    
+    }
     public void movement(){
         if(Greenfoot.isKeyDown("a")){
             this.setRotation(-10);
@@ -46,16 +46,17 @@ public class Rocket extends Actor
             this.setLocation(this.getX(),this.getY()-1);
     }
     public void collide(){
-        
+
         if(this.isTouching(Asteroid.class)){
-            
+
             hit.setVolume(75);
             hit.play();
             Health p = (Health)getWorld().getObjects(Health.class).get(0);
-            p.setHealth(p.getHealth()-1);
+            Asteroid a = (Asteroid)getOneIntersectingObject(Asteroid.class);
+            p.setHealth(p.getHealth()-a.getDamage());
             removeTouching(Asteroid.class);
             getWorld().addObject(new Asteroid(),Greenfoot.getRandomNumber(getWorld().getWidth()),3);
-           
+
         }
     }
 }

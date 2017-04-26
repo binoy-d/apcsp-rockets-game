@@ -1,11 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.awt.Color;
 /**
  * Write a description of class Asteroid here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
+
 public class Asteroid extends Actor
 {
     /**
@@ -20,14 +21,18 @@ public class Asteroid extends Actor
     }
     public void spawn(){
         setImage("asteroid"+(Greenfoot.getRandomNumber(2)+1)+".png");
+        
         setLocation(Greenfoot.getRandomNumber(getWorld().getWidth()),3);
         speed = Greenfoot.getRandomNumber(8)+1;
-        int p = Greenfoot.getRandomNumber(64)+32;
+        p = Greenfoot.getRandomNumber(64)+32;
         getImage().scale(p,p);
         setRotation(Greenfoot.getRandomNumber(720)-360);
     }
-    
-    public void act() 
+    public int getDamage(){
+      return p/20;
+    }
+
+    public void act()
     {
         if(r == 0){
             r =1;
@@ -40,5 +45,5 @@ public class Asteroid extends Actor
              setRotation(this.getRotation()-speed);
         if(this.getY()>=getWorld().getHeight()-2)
             spawn();
-    }    
+    }
 }

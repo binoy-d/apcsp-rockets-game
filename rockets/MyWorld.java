@@ -26,13 +26,14 @@ public class MyWorld extends World
     public Health getHealth(){
         return health;
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    
+
     private void prepare()
-    
+
     {
         for(int i = 0;i<25;i++){
             addObject(new Star(),Greenfoot.getRandomNumber(getWidth()),Greenfoot.getRandomNumber(getHeight()));
@@ -48,10 +49,11 @@ public class MyWorld extends World
         }
         Rocket rocket = new Rocket();
         addObject(rocket,getWidth()/2,getHeight()*9/10);
-       
+
         addObject(health,getWidth()-100,100);
-        
-         
+
+        Health health2 = new Health();
+        addObject(health2, 769, 49);
     }
 
 }
