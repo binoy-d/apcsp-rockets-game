@@ -54,6 +54,7 @@ public class MyWorld extends World
 
         Health health2 = new Health();
         addObject(health2, 769, 49);
+        removeObject(health2);
     }
 
 }
